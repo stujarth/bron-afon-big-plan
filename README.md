@@ -69,3 +69,11 @@ view `projects_with_teams`. Admin RPCs: `admin_create_user`, `admin_set_role`, `
 1. `pg_dump` the Supabase database → Azure Database for PostgreSQL (or keep Supabase self-hosted).
 2. Deploy the Next.js app to Azure (Static Web Apps or Container Apps behind Front Door).
 3. Swap auth to Entra ID; the `profiles` table and roles carry over unchanged.
+
+## Branches and deploys
+
+- `sandbox` → ba-bigplan-sandbox (Vercel project `prj_gKtANSrnrfn1rKvl3eT17zuN93IP`, production branch `sandbox`)
+- `main` → ba-bigplan-live (Vercel project `prj_0W03wad90fbTIDya0Uw9mW0j80qJ`, production branch `main`)
+
+Work lands on `sandbox` first; once checked there, merge `sandbox` into `main` to release to live.
+Database changes go in `supabase/migrations/` and are applied to sandbox, then live.
