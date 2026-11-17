@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #081D2D;
+  --color-blue: #007DC3;
+  --color-green: #00B259;
+  --color-maroon: #981B45;
+  --color-grey: #717073;
+  --color-lblue: #EDF5F9;
+  --font-sans: Arial, Helvetica, sans-serif;
+}
+
+:root { color-scheme: light; }
+/* 112.5% scales every rem-based size up (16px → 18px) and still honours each person's own browser text-size setting. */
+html { font-size: 112.5%; height: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { @apply h-full bg-[#F6F8FA] text-[#0F1F2C] font-sans text-sm leading-normal antialiased; }
+:focus-visible { outline: 3px solid var(--color-blue); outline-offset: 2px; }
+.field { @apply h-11 w-full rounded-md border border-slate-400 bg-white px-3 text-base text-[#0F1F2C]; }
+.field:disabled { @apply bg-slate-50 text-slate-600; }
+select.field { @apply appearance-none pr-10; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none' stroke='%23334155' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 8l5 5 5-5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.75rem center; }
+.field-date { @apply cursor-pointer pr-3; }
+.field-date.is-empty { color: #64748b; }
+.field-date::-webkit-calendar-picker-indicator { width: 1.6rem; height: 1.6rem; cursor: pointer; opacity: 0.75; }
+.field-date::-webkit-calendar-picker-indicator:hover { opacity: 1; }
+.btn { @apply inline-flex min-h-[40px] items-center gap-2 rounded-md border border-slate-400 bg-white px-4 py-2 text-sm font-semibold hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed; }
+.btn-primary { @apply border-blue bg-blue text-white hover:bg-[#006AA6]; }
+.btn-quiet { @apply border-transparent text-slate-700 hover:bg-slate-100; }
+.chip { @apply inline-flex min-h-[36px] cursor-pointer select-none items-center gap-2 rounded-full border border-slate-400 bg-white px-3 py-1.5 text-sm; }
+.chip input { @apply h-4 w-4; }
+.chip[data-on="true"] { @apply border-blue bg-lblue; }
+.pill { @apply inline-block whitespace-nowrap rounded-full px-2 py-0.5 text-xs font-semibold; }
+.seg { @apply inline-flex overflow-hidden rounded-md border border-slate-400; }
+.seg > button { @apply min-h-[36px] border-l border-slate-400 bg-white px-3.5 py-1.5 text-sm font-semibold text-slate-700 first:border-l-0 hover:bg-slate-50; }
+.seg > button[data-on="true"] { @apply bg-navy text-white; }
+
+@media print {
+  header, .print\:hidden, nav, .btn { display: none !important; }
+  body { background: #fff; }
+  main { max-width: none !important; padding: 0 !important; }
+  .overflow-x-auto { overflow: visible !important; }
+}
+
+.skip-link { @apply sr-only; }
+.skip-link:focus { @apply not-sr-only fixed left-3 top-3 z-[60] rounded-md bg-white px-4 py-2 font-bold text-navy shadow-lg; }
